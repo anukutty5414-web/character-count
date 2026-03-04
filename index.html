@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 100px;
+        }
+
+        #warning {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Message Box (200 Characters Max)</h1>
+
+    <textarea id="message" maxlength="200"></textarea>
+
+    <p id="counter">0/200 characters</p>
+    <p id="warning"></p>
+
+    <script>
+        var textarea = document.getElementById("message");
+        var counter = document.getElementById("counter");
+        var warning = document.getElementById("warning");
+        var max = 200;
+
+        textarea.addEventListener("input", function () {
+            var length = textarea.value.length;
+            var remaining = max - length;
+
+            counter.textContent = length + "/" + max + " characters";
+
+            if (remaining === 0) {
+                warning.textContent = "Character limit reached!";
+            } else {
+                warning.textContent = "";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
